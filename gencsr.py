@@ -65,7 +65,7 @@ if not os.path.exists(ssl_dir):
 # function that creates and prints to stdout CSR and key files
 def gencsrfiles(cn, email, C, ST, L, OU):
     # Create all needed directory
-    result_dir = ssl_dir + '/' +cn
+    result_dir = ssl_dir + '/' + cn
     if not os.path.exists(ssl_dir + '/' +cn):
         os.makedirs(ssl_dir + '/' +cn)
     csr_file = result_dir + '/' + cn + '.csr'
