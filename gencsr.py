@@ -11,7 +11,8 @@ The most of parameteres, that usually used as fields in CSR, are already given w
 ''')
 parser.add_argument('--cn',
                     '-c',
-                    type=str, 
+                    type=str,
+                    required=True, 
                     help='The fully-qualified domain name (FQDN) (e.g., www.example.com).')
 
 parser.add_argument('--email',
@@ -78,9 +79,9 @@ def gencsrfiles(cn, email, C, ST, L, OU):
     csr = crypto.X509Req()
     csr.get_subject().CN = cn
     csr.get_subject().C = C
-    csr.get_subject().ST = 'State'
-    csr.get_subject().L = 'Location'
-    csr.get_subject().OU = 'Org'
+    csr.get_subject().ST = ST
+    csr.get_subject().L = L
+    csr.get_subject().OU = OU
     csr.get_subject().emailAddress = email
     csr.set_pubkey(key)
     csr.sign(key, 'sha1')
